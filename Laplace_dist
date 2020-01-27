@@ -1,0 +1,10 @@
+dskewLaplace <- function(x,mean,sd,skew){
+  alpha <- sqrt(1+skew^2/sd^2)
+  # pdf of the skew Laplace distribution
+  d <- exp(-(x-mean)^2*alpha/sd^2+(x-mean)*skew/sd^2)/(2*sd*alpha)
+  return(d)
+}
+dskewnorm <- function(x,mean,sd,skew){
+  d <- 2*dnorm((x-mean)/sd)*pnorm(skew*(x-mean)/sd)/sd
+  return(d)
+}
